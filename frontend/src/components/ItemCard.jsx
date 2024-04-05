@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -6,34 +7,48 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
-import ButtonProof from "./ButtonProof";
-export function ItemCard() {
+import ProofModal from "./ProofModal";
+
+export function ItemCard({ product }) {
+    const [showAlternative, setShowAlternative] = useState(false);
+
+    const toggleAlternative = () => {
+        setShowAlternative(!showAlternative);
+    };
+
     return (
-        <Card className="max-w-[24rem] overflow-hidden">
+        <Card className={`max-w-[24rem] overflow-hidden`}>
+
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
                 className="m-0 rounded-none"
             >
-                <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                    alt="ui/ux review check"
-                />
+                <img className="w-100 h-100" src={product.logo} alt={product.name} />
             </CardHeader>
+
             <CardBody>
                 <Typography variant="h4" color="blue-gray">
-                    UI/UX Review Check
-                </Typography>
-                <Typography variant="lead" color="gray" className="mt-3 font-normal">
-                    Because it&apos;s about motivating the doers. Because I&apos;m here to
-                    follow my dreams and inspire others.
+                    {showAlternative ? product.alternative : product.name}
                 </Typography>
             </CardBody>
+
             <CardFooter className="flex items-center justify-between">
-            <ButtonProof />
-                <Button className="rounded-full" variant="outlined">Alternative</Button>
+                {showAlternative ? (
+                    <Button className="rounded-full flex-grow" variant="gradient" onClick={toggleAlternative}>
+                        Proof
+                    </Button>
+                ) : (
+                    <>
+                        <ProofModal product={product}/>
+                        <Button className="rounded-full" variant="outlined" onClick={toggleAlternative}>
+                            Alternative
+                        </Button>
+                    </>
+                )}
             </CardFooter>
+        
         </Card>
     );
 }
