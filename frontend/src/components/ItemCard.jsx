@@ -10,6 +10,7 @@ import { Button } from "@material-tailwind/react";
 import ProofModal from "./ProofModal";
 
 export function ItemCard({ product }) {
+
     const [showAlternative, setShowAlternative] = useState(false);
 
     const toggleAlternative = () => {
@@ -25,26 +26,29 @@ export function ItemCard({ product }) {
                 color="transparent"
                 className="m-0 rounded-none"
             >
-                <img className="w-100 h-100" src={product.logo} alt={product.name} />
+                {showAlternative ? <img className="w-100 h-100" src={product.logoAlternative} alt={product.alternative} /> : <img className="w-100 h-100" src={product.logo} alt={product.name} />}
+                
             </CardHeader>
 
             <CardBody>
                 <Typography variant="h4" color="blue-gray">
-                    {showAlternative ? product.alternative : product.name}
+                {showAlternative ? product.alternative : product.name}
                 </Typography>
             </CardBody>
 
             <CardFooter className="flex items-center justify-between">
-                {showAlternative ? (
+            {showAlternative ? (
                     <Button className="rounded-full flex-grow" variant="gradient" onClick={toggleAlternative}>
-                        Proof
+                        Go Back
                     </Button>
                 ) : (
                     <>
                         <ProofModal product={product}/>
+
+                        {product.alternative ? 
                         <Button className="rounded-full" variant="outlined" onClick={toggleAlternative}>
                             Alternative
-                        </Button>
+                        </Button> : "" }
                     </>
                 )}
             </CardFooter>

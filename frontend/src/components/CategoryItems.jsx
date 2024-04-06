@@ -45,17 +45,12 @@ export default function CategoryItems({ categoryName }) {
         }
     }, [categoryName]);
 
-    useEffect(() => {
-        if (productData) {
-            setFilteredData(productData);
-        }
-    }, [productData]);
 
     useEffect(() => {
         if (searchTerm && productData) {
             const filteredSearch = productData.filter((product) => 
-            product.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-        );            console.log(filteredData);
+            product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );  
             setFilteredData(filteredSearch);
         } else {
             setFilteredData(productData);

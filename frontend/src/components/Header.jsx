@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext,useState, useEffect } from "react";
 import SearchTermContext from "../SearchTermContext";
 import {
     Navbar,
@@ -12,10 +12,10 @@ import {
 import { SuggestionModal } from "./SuggestionModal";
 
 export function Header() {
-    const [openNav, setOpenNav] = React.useState(false);
+    const [openNav, setOpenNav] = useState(false);
     const {searchTerm, setSearchTerm} = useContext(SearchTermContext);
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.addEventListener(
             "resize",
             () => window.innerWidth >= 960 && setOpenNav(false),

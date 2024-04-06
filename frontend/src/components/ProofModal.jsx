@@ -14,7 +14,7 @@ export default function ProofModal({product}) {
  
   return (
     <>
-      <Button onClick={handleOpen} variant="gradient">
+      <Button onClick={handleOpen} variant="gradient" className={product.alternative ? "" :"flex-grow" }>
         Proof
       </Button>
       
