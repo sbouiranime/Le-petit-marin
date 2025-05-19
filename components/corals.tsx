@@ -2,17 +2,29 @@
 
 import { useRef, useMemo } from "react"
 import { useFrame } from "@react-three/fiber"
-import { MathUtils } from "three"
+import { MathUtils, Group } from "three"
 import { Float } from "@react-three/drei"
 
 export function Corals() {
   const coralPositions = useMemo(() => {
     return Array.from({ length: 10 }).map(() => ({
-      position: [MathUtils.randFloatSpread(30), -10 + MathUtils.randFloat(0, 3), MathUtils.randFloatSpread(30) - 5],
-      rotation: [MathUtils.randFloat(-0.2, 0.2), MathUtils.randFloat(0, Math.PI * 2), MathUtils.randFloat(-0.2, 0.2)],
+      position: [
+        MathUtils.randFloatSpread(30),
+        -10 + MathUtils.randFloat(0, 3),
+        MathUtils.randFloatSpread(30) - 5
+      ] as [number, number, number],
+      rotation: [
+        MathUtils.randFloat(-0.2, 0.2),
+        MathUtils.randFloat(0, Math.PI * 2),
+        MathUtils.randFloat(-0.2, 0.2)
+      ] as [number, number, number],
       scale: MathUtils.randFloat(0.5, 1.5),
       type: Math.floor(MathUtils.randFloat(0, 3)),
-      color: [MathUtils.randFloat(0.8, 1), MathUtils.randFloat(0.2, 0.6), MathUtils.randFloat(0.4, 0.8)],
+      color: [
+        MathUtils.randFloat(0.8, 1),
+        MathUtils.randFloat(0.2, 0.6),
+        MathUtils.randFloat(0.4, 0.8)
+      ] as [number, number, number],
     }))
   }, [])
 
@@ -25,8 +37,16 @@ export function Corals() {
   )
 }
 
-function Coral({ position, rotation, scale, type, color }) {
-  const coralRef = useRef()
+interface CoralProps {
+  position: [number, number, number];
+  rotation: [number, number, number];
+  scale: number;
+  type: number;
+  color: [number, number, number];
+}
+
+function Coral({ position, rotation, scale, type, color }: CoralProps) {
+  const coralRef = useRef<Group>(null)
 
   useFrame((state) => {
     if (coralRef.current) {

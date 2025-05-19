@@ -14,16 +14,20 @@ import {
   Sphere,
   OrbitControls,
 } from "@react-three/drei"
+import { Group } from "three"
 import { Navigation } from "./navigation"
 import { Bubbles } from "./bubbles"
 import { Fish } from "./fish"
 import { Corals } from "./corals"
 import { Sections } from "./sections"
 
+// Define the section type to match what Sections component expects
+type SectionType = "home" | "about" | "features" | "gallery" | "contact";
+
 export default function MarineScene() {
-  const [activeSection, setActiveSection] = useState("home")
-  const [isMobile, setIsMobile] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [activeSection, setActiveSection] = useState<SectionType>("home")
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -33,7 +37,6 @@ export default function MarineScene() {
     checkMobile()
     window.addEventListener("resize", checkMobile)
 
-    // Set loading to false after a short delay
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 500)
@@ -83,22 +86,24 @@ export default function MarineScene() {
       <Fish count={isMobile ? 3 : 8} />
       <Corals />
 
-      <Html fullscreen zIndexRange={[100, 0]}>
-        <div className="fixed top-0 left-0 w-full z-50">
-          <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-        </div>
-      </Html>
+    
     </Canvas>
   )
 }
 
-function SceneContent({ activeSection, setActiveSection, isMobile }) {
-  const groupRef = useRef()
+interface SceneContentProps {
+  activeSection: SectionType;
+  setActiveSection: (section: SectionType) => void;
+  isMobile: boolean;
+}
+
+function SceneContent({ activeSection, setActiveSection, isMobile }: SceneContentProps) {
+  const groupRef = useRef<Group>(null)
   const { camera } = useThree()
 
   useEffect(() => {
     // Camera positions for different sections
-    const positions = {
+    const positions: Record<SectionType, [number, number, number]> = {
       home: [0, 0, 10],
       about: [-8, 0, 5],
       features: [8, 0, 5],

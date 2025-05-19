@@ -3,12 +3,12 @@
 import { useRef, useMemo } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Sphere, MeshTransmissionMaterial } from "@react-three/drei"
-import { MathUtils } from "three"
+import { MathUtils, Group, Mesh } from "three"
 
-export function Bubbles({ count = 50 }) {
+export function Bubbles({ count = 50 }: { count?: number }) {
   const bubbles = useMemo(() => {
     return Array.from({ length: count }).map(() => ({
-      position: [MathUtils.randFloatSpread(30), MathUtils.randFloatSpread(30), MathUtils.randFloatSpread(30)],
+      position: [MathUtils.randFloatSpread(30), MathUtils.randFloatSpread(30), MathUtils.randFloatSpread(30)] as [number, number, number],
       scale: MathUtils.randFloat(0.1, 0.5),
       speed: MathUtils.randFloat(0.2, 1),
       rotationSpeed: MathUtils.randFloat(0.1, 0.5),
@@ -25,24 +25,25 @@ export function Bubbles({ count = 50 }) {
   )
 }
 
-function Bubble({ position, scale, speed, rotationSpeed, offset }) {
-  const ref = useRef()
+interface BubbleProps {
+  position: [number, number, number];
+  scale: number;
+  speed: number;
+  rotationSpeed: number;
+  offset: number;
+}
+
+function Bubble({ position, scale, speed, rotationSpeed, offset }: BubbleProps) {
+  const ref = useRef<Mesh>(null)
   const initialY = position[1]
 
   useFrame((state, delta) => {
     if (ref.current) {
-      // Move bubble upward
       ref.current.position.y += speed * delta
-
-      // Add slight horizontal movement
       ref.current.position.x += Math.sin(state.clock.elapsedTime * 0.5 + offset) * 0.02
       ref.current.position.z += Math.cos(state.clock.elapsedTime * 0.5 + offset) * 0.02
-
-      // Rotate bubble
       ref.current.rotation.x += rotationSpeed * delta
       ref.current.rotation.y += rotationSpeed * 0.8 * delta
-
-      // Reset position when bubble goes too high
       if (ref.current.position.y > 15) {
         ref.current.position.y = initialY - 15
       }

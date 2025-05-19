@@ -25,8 +25,6 @@ type MenuCategories = {
 
 // Define type for full menu (includes additional categories)
 type FullMenu = MenuCategories & {
-  entrees: MenuItem[];
-  desserts: MenuItem[];
   boissons: MenuItem[];
 }
 
@@ -213,35 +211,8 @@ export function Menu() {
     ],
   }
 
-  // Full menu for modal display
   const fullMenu: FullMenu = {
     ...menuItems,
-    entrees: [
-      {
-        name: "Salade de Fruits de Mer",
-        description: "Mélange de fruits de mer frais sur lit de salade",
-        price: "18 Dt",
-        popular: true,
-      },
-      {
-        name: "Soupe de Poisson",
-        description: "Soupe traditionnelle aux poissons méditerranéens",
-        price: "12 Dt",
-      }
-    ],
-    desserts: [
-      {
-        name: "Tiramisu",
-        description: "Dessert italien traditionnel au café",
-        price: "10 Dt",
-        popular: true,
-      },
-      {
-        name: "Crème Brûlée",
-        description: "Crème vanillée caramélisée",  
-        price: "8 Dt",
-      }
-    ],
     boissons: [
       {
         name: "Eau Minérale",
@@ -260,9 +231,7 @@ export function Menu() {
   const getCategoryLabel = (categoryId: string): string => {
     const category = categories.find(cat => cat.id === categoryId);
     if (category) return category.label;
-    
-    if (categoryId === "entrees") return "Entrées";
-    if (categoryId === "desserts") return "Desserts";
+  
     if (categoryId === "boissons") return "Boissons";
     
     return categoryId;

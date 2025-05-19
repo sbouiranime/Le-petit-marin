@@ -3,7 +3,18 @@
 import { Html, Float, Text } from "@react-three/drei"
 import { Button } from "@/components/ui/button"
 
-export function Sections({ activeSection, isMobile }) {
+interface SectionsProps {
+  activeSection: "home" | "about" | "features" | "gallery" | "contact"
+  isMobile: boolean
+}
+
+interface FeatureCardProps {
+  title: string
+  description: string
+  color: string
+}
+
+export function Sections({ activeSection, isMobile }: SectionsProps) {
   return (
     <group>
       {/* About Section */}
@@ -183,7 +194,7 @@ export function Sections({ activeSection, isMobile }) {
   )
 }
 
-function FeatureCard({ title, description, color }) {
+function FeatureCard({ title, description, color }: FeatureCardProps) {
   return (
     <div className={`bg-gradient-to-br ${color} p-4 rounded-lg shadow-lg`}>
       <h3 className="text-lg font-bold text-white mb-2">{title}</h3>

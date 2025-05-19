@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { Menu, X, Anchor, Info, Layers, ImageIcon, MessageSquare, MapPin } from "lucide-react"
 import Image from "next/image"
 
-// Define a type for menu items
 type MenuItem = {
   id: string;
   label: string;
@@ -32,12 +31,11 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Add type to id parameter
   const scrollToSection = (id: string) => {
     setIsOpen(false)
     const element = document.getElementById(id)
     if (element) {
-      const offset = 80 // Account for fixed header
+      const offset = 80 
       const bodyRect = document.body.getBoundingClientRect().top
       const elementRect = element.getBoundingClientRect().top
       const elementPosition = elementRect - bodyRect

@@ -2,18 +2,34 @@
 
 import { useRef, useMemo } from "react"
 import { useFrame } from "@react-three/fiber"
-import { MathUtils } from "three"
+import { MathUtils, Group, Mesh } from "three"
 import { Float } from "@react-three/drei"
 
-export function Fish({ count = 8 }) {
+interface FishProps {
+  count?: number
+}
+
+interface FishData {
+  position: [number, number, number]
+  rotation: [number, number, number]
+  scale: number
+  speed: number
+  wiggleSpeed: number
+  color: [number, number, number]
+  offset: number
+}
+
+interface SimpleFishProps extends FishData {}
+
+export function Fish({ count = 8 }: FishProps) {
   const fishes = useMemo(() => {
     return Array.from({ length: count }).map(() => ({
-      position: [MathUtils.randFloatSpread(40), MathUtils.randFloatSpread(20), MathUtils.randFloatSpread(30) - 10],
-      rotation: [0, Math.random() > 0.5 ? 0 : Math.PI, 0],
+      position: [MathUtils.randFloatSpread(40), MathUtils.randFloatSpread(20), MathUtils.randFloatSpread(30) - 10] as [number, number, number],
+      rotation: [0, Math.random() > 0.5 ? 0 : Math.PI, 0] as [number, number, number],
       scale: MathUtils.randFloat(0.2, 0.8),
       speed: MathUtils.randFloat(0.5, 2),
       wiggleSpeed: MathUtils.randFloat(1, 3),
-      color: [MathUtils.randFloat(0, 1), MathUtils.randFloat(0.3, 1), MathUtils.randFloat(0.5, 1)],
+      color: [MathUtils.randFloat(0, 1), MathUtils.randFloat(0.3, 1), MathUtils.randFloat(0.5, 1)] as [number, number, number],
       offset: Math.random() * Math.PI * 2,
     }))
   }, [count])
@@ -27,11 +43,11 @@ export function Fish({ count = 8 }) {
   )
 }
 
-function SimpleFish({ position, rotation, scale, speed, wiggleSpeed, color, offset }) {
-  const fishRef = useRef()
-  const tailRef = useRef()
-  const finLeftRef = useRef()
-  const finRightRef = useRef()
+function SimpleFish({ position, rotation, scale, speed, wiggleSpeed, color, offset }: SimpleFishProps) {
+  const fishRef = useRef<Group>(null)
+  const tailRef = useRef<Mesh>(null)
+  const finLeftRef = useRef<Mesh>(null)
+  const finRightRef = useRef<Mesh>(null)
 
   const direction = rotation[1] === 0 ? 1 : -1
   const boundaryX = 20
