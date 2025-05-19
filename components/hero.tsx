@@ -114,7 +114,7 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="container mx-auto text-center z-10 max-w-3xl"
+        className="container mx-auto text-center z-10 max-w-4xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -143,12 +143,12 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          Fraîcheur de la mer et saveurs d’ailleurs, dans un écrin marin envoûtant
+          Fraîcheur de la mer et saveurs d'ailleurs, dans un écrin marin envoûtant
         </motion.p>
 
-        {/* Carrousel */}
+        {/* Carrousel agrandi */}
         <motion.div
-          className="relative mt-8 mb-8 max-w-2xl mx-auto"
+          className="relative mt-8 mb-8 max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -163,7 +163,7 @@ export function Hero() {
                   <img 
                     src={src} 
                     alt={`Vue du restaurant ${index + 1}`} 
-                    className="w-full h-64 object-cover"
+                    className="w-full h-96 md:h-112 lg:h-128 object-cover"
                   />
                 </div>
               ))}
@@ -173,31 +173,31 @@ export function Hero() {
           {/* Contrôles du carrousel */}
           <button 
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-3 hover:bg-opacity-75 transition-colors"
             aria-label="Image précédente"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           <button 
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full p-3 hover:bg-opacity-75 transition-colors"
             aria-label="Image suivante"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
           
           {/* Indicateurs */}
-          <div className="flex justify-center mt-4 gap-2">
+          <div className="flex justify-center mt-6 gap-3">
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full ${
+                className={`w-4 h-4 rounded-full ${
                   index === currentSlide ? "bg-white" : "bg-white bg-opacity-50"
                 }`}
                 aria-label={`Aller à l'image ${index + 1}`}
