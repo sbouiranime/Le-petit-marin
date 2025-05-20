@@ -23,45 +23,46 @@ export function Gallery() {
     id: 0,
     src: "/1.jpg",
     alt: "Image de galerie 1",
-    title: "Risotto oeuf et ancre de seiche",
-    description: "Un plat mijoté à base de poisson frais, relevé d'épices traditionnelles.",
+    title: "Risotto œuf et encre de seiche",
+    description: "Un risotto crémeux à l'encre de seiche, surmonté d’un œuf mollet pour une touche gourmande.",
   },
   {
     id: 1,
     src: "/2.jpg",
     alt: "Image de galerie 2",
     title: "Spaghetti fruits de mer",
-    description: "Un classique revisité avec agneau, merguez et légumes de saison.",
+    description: "Des spaghetti al dente accompagnés de crevettes, moules et calamars dans une sauce légèrement épicée.",
   },
   {
     id: 2,
     src: "/3.jpg",
     alt: "Image de galerie 3",
     title: "Linguine au saumon",
-    description: "Savourez un riz safrané aux fruits de mer et poivrons grillés.",
+    description: "Linguine enrobées d’une sauce crémeuse au saumon frais et herbes aromatiques.",
   },
   {
     id: 3,
     src: "/4.jpg",
     alt: "Image de galerie 4",
-    title: "Plat sauté à l’ail ",
-    description: "Crémeux et parfumé, servi avec des gambas grillées à la perfection.",
+    title: "Plat sauté à l’ail",
+    description: "Un mélange de légumes croquants et fruits de mer sautés à l’ail et aux fines herbes.",
   },
   {
     id: 4,
     src: "/5.jpg",
     alt: "Image de galerie 5",
     title: "Risotto fruits de mer",
-    description: "Une soupe de poissons riche en goût, accompagnée de sa rouille.",
+    description: "Un risotto onctueux garni de moules, crevettes et calamars, relevé de citron et persil frais.",
   },
   {
     id: 5,
     src: "/6.jpg",
     alt: "Image de galerie 6",
     title: "Plat Loup",
-    description: "Un mélange frais et coloré de thon, œufs, olives et légumes croquants.",
+    description: "Filet de loup grillé, servi avec des légumes de saison et une sauce citronnée délicate.",
   },
 ]
+
 
 
 

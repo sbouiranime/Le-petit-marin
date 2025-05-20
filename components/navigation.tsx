@@ -58,18 +58,19 @@ export function Navigation() {
           <Image src="/images/black_logo.png" alt="Le Petit Marin" width={120} height={60} className="h-12 w-auto" />
         </div>
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
+              <div className="hidden md:flex space-x-8">
           {menuItems.map((item) => (
-            <button
+            <a
               key={item.id}
-              onClick={() => scrollToSection(item.id)}
+              href={`#${item.id}`}
               className="flex items-center text-sm font-medium transition-colors text-white hover:text-blue-200"
             >
               {item.icon}
               {item.label}
-            </button>
+            </a>
           ))}
         </div>
+
         {/* Mobile Navigation Toggle */}
         <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
