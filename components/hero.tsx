@@ -134,7 +134,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          Poissonnerie - grill
+          Restaurant - Pizzeria 
         </motion.p>
 
         <motion.p
@@ -143,7 +143,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          Fraîcheur de la mer et saveurs d'ailleurs, dans un écrin marin envoûtant
+          Un voyage culinaire entre la mer, la terre et la flamme
         </motion.p>
 
         {/* Carrousel agrandi */}

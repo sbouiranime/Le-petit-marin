@@ -10,6 +10,7 @@ import { Location } from "@/components/location"
 import { Features } from "@/components/features"
 import { Reviews } from "@/components/reviews"
 
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#0c2e60] via-[#0a2550] to-[#081c40] text-white relative overflow-hidden">

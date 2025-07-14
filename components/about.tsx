@@ -31,13 +31,14 @@ export function About() {
           >
            <h3 className="text-xl font-bold mb-4 text-white">Notre Histoire</h3>
 <p className="mb-4 text-blue-100">
-  Le Petit Marin est un restaurant situé à Nabeul, spécialisé dans la cuisine marine et connu pour ses plats à base de poissons frais.
+  Le Petit Marin est un restaurant situé à Nabeul, convivial offrant une cuisine variée qui ravit tous les palais, entre saveurs de la mer, grillades, pizzas et spécialités maison.
 </p>
 <p className="mb-4 text-blue-100">
-  Fondé le 7 juin 2024, notre établissement est né d'une grande passion pour la mer et pour la richesse culinaire qu'elle inspire.
+  Fondé le 7 juin 2024, notre établissement est né d’une passion pour la gastronomie et la diversité culinaire.
 </p>
 <p className="text-blue-100">
-  Chaque jour, nous sélectionnons des produits frais auprès de pêcheurs locaux pour vous offrir des plats savoureux dans un cadre chaleureux et authentique.
+  Chaque jour, nous sélectionnons avec soin des produits frais et de qualité auprès de fournisseurs locaux, pour vous proposer des plats savoureux dans un cadre chaleureux et authentique.
+
 </p>
 
 

@@ -18,7 +18,7 @@ export function Footer() {
               />
             </div>
             <div className="text-blue-100 max-w-xs text-center md:text-left">
-              <p className="italic">Restaurant tunisien spécialisé dans les fruits de mer et les poissons frais</p>
+              <p className="italic">Restaurant tunisien proposant une cuisine riche et variée, entre fruits de mer, poissons frais, grillades, pizzas et spécialités maison.</p>
               <p className="mt-2 text-sm">Fondé le 7 juin 2024</p>
             </div>
           </div>
@@ -81,7 +81,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-blue-800 mt-8 pt-6 text-center text-sm text-blue-200">
-          <p>&copy; {new Date().getFullYear()} LE PETIT MARIN. Poissonnerie - grill. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} LE PETIT MARIN. Restaurant - Pizzeria. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
