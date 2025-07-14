@@ -17,8 +17,10 @@ type MenuItem = {
 
 // Define type for menu categories
 type MenuCategories = {
-  "pates-classiques": MenuItem[];
+  "entrees-froides": MenuItem[];
+  "entrees-chaudes": MenuItem[];
   "pates-fraiches": MenuItem[];
+  "pates-classiques": MenuItem[];
   "spaghetti-pasta": MenuItem[];
   "risottos": MenuItem[];
   "paellas": MenuItem[];
@@ -29,8 +31,6 @@ type MenuCategories = {
   "pizzas": MenuItem[];
   "panuozzo": MenuItem[];
   "sauces": MenuItem[];
-  "entrees-froides": MenuItem[];
-  "entrees-chaudes": MenuItem[];
   "desserts": MenuItem[];
   "boissons": MenuItem[];
 }
@@ -64,11 +64,18 @@ export default function MinimalistMenu() {
 
   const categories = [
     { 
-      id: "pates-classiques" as CategoryId, 
-      label: "PÂTES CLASSIQUES",
-      emoji: "🍝",
-      imageRef: "/pasta-classique.jpeg",
-      bgColor: "bg-gradient-to-br from-blue-50 to-blue-100"
+      id: "entrees-froides" as CategoryId, 
+      label: "ENTRÉES FROIDES",
+      emoji: "🥗",
+      imageRef: "entree-froide.jpg",
+      bgColor: "bg-gradient-to-br from-green-50 to-cyan-100"
+    },
+    { 
+      id: "entrees-chaudes" as CategoryId, 
+      label: "ENTRÉES CHAUDES",
+      emoji: "🍤",
+      imageRef: "entree-chaude.jpg",
+      bgColor: "bg-gradient-to-br from-orange-50 to-red-100"
     },
     { 
       id: "pates-fraiches" as CategoryId, 
@@ -76,6 +83,13 @@ export default function MinimalistMenu() {
       emoji: "🥟",
       imageRef: "/pasta-fraiche.jpeg",
       bgColor: "bg-gradient-to-br from-green-50 to-emerald-100"
+    },
+    { 
+      id: "pates-classiques" as CategoryId, 
+      label: "PÂTES CLASSIQUES",
+      emoji: "🍝",
+      imageRef: "/pasta-classique.jpeg",
+      bgColor: "bg-gradient-to-br from-blue-50 to-blue-100"
     },
     { 
       id: "spaghetti-pasta" as CategoryId, 
@@ -148,20 +162,6 @@ export default function MinimalistMenu() {
       bgColor: "bg-gradient-to-br from-purple-50 to-pink-100"
     },
     { 
-      id: "entrees-froides" as CategoryId, 
-      label: "ENTRÉES FROIDES",
-      emoji: "🥗",
-      imageRef: "entree-froide.jpg",
-      bgColor: "bg-gradient-to-br from-green-50 to-cyan-100"
-    },
-    { 
-      id: "entrees-chaudes" as CategoryId, 
-      label: "ENTRÉES CHAUDES",
-      emoji: "🍤",
-      imageRef: "entree-chaude.jpg",
-      bgColor: "bg-gradient-to-br from-orange-50 to-red-100"
-    },
-    { 
       id: "desserts" as CategoryId, 
       label: "DESSERTS",
       emoji: "🍰",
@@ -178,13 +178,17 @@ export default function MinimalistMenu() {
   ]
 
   const menuItems: MenuCategories = {
-    "pates-classiques": [
-      { name: "Penne Alfredo", price: "45.00", popular: true },
-      { name: "Rigatoni truffe et champignons", price: "42.00", popular: true },
-      { name: "Rigatoni crevettes, champignons et moules", price: "44.00" },
-      { name: "Rigatoni bœuf", price: "45.00" },
-      { name: "Linguine crevettes et artichauts", price: "35.00" },
-      { name: "Calamarata", price: "45.00" },
+    "entrees-froides": [
+      { name: "Salade César",  price: "20.00" },
+      { name: "Salade Pescatore", price: "25.00", popular: true },
+      { name: "Salade betterave et Burrata",  price: "23.00" },
+      { name: "Salade fichi Burrata",  price: "25.00" },
+      { name: "Salade Caprese", price: "20.00" },
+    ],
+    "entrees-chaudes": [
+      { name: "Crevettes, sauce cajun", price: "35.00", popular: true },
+      { name: "Calamars grillés, sauce vierge", price: "39.00" },
+      { name: "Calamars, sauce cajun",price: "39.00" },
     ],
     "pates-fraiches": [
       { name: "Mafaldine crevettes et champignons", price: "44.00", popular: true },
@@ -197,6 +201,14 @@ export default function MinimalistMenu() {
       { name: "Gnocchi truffes et champignons", price: "40.00" },
       { name: "Gnocchi 5 fromages",  price: "45.00" },
       { name: "Gnocchi pesto", price: "40.00" },
+    ],
+    "pates-classiques": [
+      { name: "Penne Alfredo", price: "45.00", popular: true },
+      { name: "Rigatoni truffe et champignons", price: "42.00", popular: true },
+      { name: "Rigatoni crevettes, champignons et moules", price: "44.00" },
+      { name: "Rigatoni bœuf", price: "45.00" },
+      { name: "Linguine crevettes et artichauts", price: "35.00" },
+      { name: "Calamarata", price: "45.00" },
     ],
     "spaghetti-pasta": [
       { name: "Spaghetti Pescatore", price: "38.00", popular: true },
@@ -274,18 +286,6 @@ export default function MinimalistMenu() {
       { name: "Miel et moutarde",  price: "10.00" },
       { name: "Curry", price: "10.00" },
     ],
-    "entrees-froides": [
-      { name: "Salade César",  price: "20.00" },
-      { name: "Salade Pescatore", price: "25.00", popular: true },
-      { name: "Salade betterave et Burrata",  price: "23.00" },
-      { name: "Salade fichi Burrata",  price: "25.00" },
-      { name: "Salade Caprese", price: "20.00" },
-    ],
-    "entrees-chaudes": [
-      { name: "Crevettes, sauce cajun", price: "35.00", popular: true },
-      { name: "Calamars grillés, sauce vierge", price: "39.00" },
-      { name: "Calamars, sauce cajun",price: "39.00" },
-    ],
     "desserts": [
       { name: "Crème brûlée",price: "15.00", popular: true },
       { name: "Fondant au chocolat", price: "14.00" },
@@ -332,13 +332,12 @@ export default function MinimalistMenu() {
               </div>
             </div>
             <button 
-  onClick={() => window.location.href = "/#home"}
-  className="flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-gray-800 transition-colors"
->
-  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-  <span className="text-sm sm:text-base">Retour</span>
-</button>
-
+              onClick={() => window.location.href = "/#home"}
+              className="flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-gray-800 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Retour</span>
+            </button>
           </div>
         </div>
       </div>
@@ -411,18 +410,17 @@ export default function MinimalistMenu() {
             >
               <div className="relative">
                 <div className="relative h-32 sm:h-48 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
-  <Image
-    src={currentCategory?.imageRef || "/default.jpg"}
-    alt={currentCategory?.label || "Image de la catégorie"}
-    fill
-    className="object-cover"
-    priority
-  />
-  <div className="absolute inset-0 bg-black bg-opacity-30" />
-  <div className="absolute inset-0 flex items-center justify-center">
-  
-  </div>
-</div>
+                  <Image
+                    src={currentCategory?.imageRef || "/default.jpg"}
+                    alt={currentCategory?.label || "Image de la catégorie"}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-30" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                  </div>
+                </div>
 
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3 sm:p-6">
                   <h2 className="text-xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">
